@@ -1,18 +1,13 @@
-import { ref, computed } from "vue";
+import { ref, computed, type Ref } from "vue";
 import { defineStore } from "pinia";
-
-interface Tag {
-  text: string;
-  bg: number[] | string;
-  color: number[] | string;
-}
+import { type Tag } from "@/types";
 
 export const useTagStore = defineStore("tags", () => {
-  const tags = ref([
+  const tags: Ref<Tag[]> = ref([
     { text: "This", bg: "#40a6ceff", color: "#000000FF" },
     { text: "was", bg: "#99cc33ff", color: "#FFFFFFFF" },
     { text: "passed", bg: "#99cc33ff", color: "#FFFFFFFF" },
-    { text: "in", bg: "#f9e154ff", color: "#FFFFFFFF" },
+    { text: "in", bg: "#f9e154ff", color: "#000000FF" },
     { text: "through", bg: "#ec942cff", color: "#FFFFFFFF" },
     { text: "the", bg: "#f02c2cff", color: "#FFFFFFFF" },
     { text: "url", bg: "#763053FF", color: "#000000FF" },
@@ -24,9 +19,13 @@ export const useTagStore = defineStore("tags", () => {
     )}`;
   });
 
-  const addTag = (tag: any) => {
+  const addTag = (tag: Tag) => {
     tags.value = [...tags.value, tag];
   };
 
-  return { tags, url, addTag };
+  const editTag = (tag: Tag, idx: number) => {
+    tags.value = tags.value.toSpliced(idx, 1, tag);
+  };
+
+  return { tags, url, addTag, editTag };
 });

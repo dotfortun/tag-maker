@@ -1,33 +1,37 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import draggable from "vuedraggable";
+
 import { storeToRefs } from "pinia";
 import { useTagStore } from "../stores/tags";
+import TagEditor from "../components/TagEditor.vue";
 
-import draggable from "vuedraggable";
 const store = useTagStore();
-const { addTag } = store;
+const { addTag, editTag } = store;
 const { url, tags } = storeToRefs(store);
 </script>
 
 <template>
   <main>
     <img :src="url" alt="test" />
-    <button
-      class="bg-green-700 rounded-md px-2 py-1"
-      @click="
-        addTag({
-          text: 'TAG!',
-          bg: '#ec942cff',
-          color: '#000000FF',
-        })
-      "
-    >
-      Add Tag
-    </button>
-
+    <draggable v-model="tags" item-key="text" class="tag-list">
+      <template #item="{ element: tag, index: idx }">
+        <TagEditor :tag="tag" :change="(t) => editTag(t, idx)" />
+      </template>
+    </draggable>
     <hr />
     <code>
       {{ tags }}
     </code>
   </main>
 </template>
+
+<style scoped>
+main {
+  @apply container;
+}
+
+.tag-list {
+  @apply flex flex-1 flex-col gap-2;
+}
+</style>
