@@ -4,8 +4,9 @@ import { storeToRefs } from "pinia";
 import { useTagStore } from "../stores/tags";
 
 import draggable from "vuedraggable";
-const { addTag, ...store } = useTagStore();
-const { url, tags } = storeToRefs(useTagStore());
+const store = useTagStore();
+const { addTag } = store;
+const { url, tags } = storeToRefs(store);
 </script>
 
 <template>
