@@ -17,7 +17,7 @@ const { url, tags } = storeToRefs(store);
       @click="
         addTag({
           text: 'TAG!',
-          bg: '#f9e154ff',
+          bg: '#ec942cff',
           color: '#000000FF',
         })
       "
