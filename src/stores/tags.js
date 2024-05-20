@@ -23,8 +23,15 @@ export const useTagStore = defineStore("tags", () => {
   };
 
   const editTag = (tag, idx) => {
-    tags.value.splice(idx, 1, tag);
+    tags.value[idx] = tag;
   };
 
-  return { tags, url, addTag, editTag };
+  const removeTag = (idx) => {
+    tags.value.splice(idx, 1);
+    if (tags.value.length === 0) {
+      addTag({ text: "Tag this!", bg: "#40a6ceff", color: "#000000FF" })
+    }
+  }
+
+  return { tags, url, addTag, editTag, removeTag };
 });

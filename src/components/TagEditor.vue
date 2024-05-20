@@ -1,5 +1,10 @@
 <script setup>
-const { tag } = defineProps(["tag"]);
+import { ref } from "vue";
+
+const { tag, change } = defineProps(["tag", "change"]);
+const tagState = ref(tag);
+
+defineEmits(["tagChanged"]);
 </script>
 
 <template>
@@ -10,7 +15,21 @@ const { tag } = defineProps(["tag"]);
       class="text"
       :value="tag.text"
       :style="{ background: tag.bg, color: tag.color }"
+      @change="
+        (ev) => {
+          tagState.text = ev.target.value;
+          $emit('tagChanged', {
+            text: tagState.text,
+            bg: tagState.bg,
+            color: tagState.color,
+          });
+        }
+      "
     />
+    <i
+      class="fa-solid fa-trash-can delete-button"
+      @click="$emit('tagRemoved')"
+    ></i>
   </div>
 </template>
 
@@ -21,5 +40,9 @@ const { tag } = defineProps(["tag"]);
 
 .input {
   @apply rounded-md;
+}
+
+.delete-button {
+  @apply aspect-square bg-red-700 p-2 rounded-md;
 }
 </style>
