@@ -24,7 +24,7 @@ export const useTagStore = defineStore("tags", () => {
   };
 
   const editTag = (tag: Tag, idx: number) => {
-    tags.value = tags.value.toSpliced(idx, 1, tag);
+    tags.value.splice(idx, 1, tag);
   };
 
   return { tags, url, addTag, editTag };
