@@ -1,9 +1,8 @@
-import { ref, computed, type Ref } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-import { type Tag } from "@/types";
 
 export const useTagStore = defineStore("tags", () => {
-  const tags: Ref<Tag[]> = ref([
+  const tags = ref([
     { text: "This", bg: "#40a6ceff", color: "#000000FF" },
     { text: "was", bg: "#99cc33ff", color: "#FFFFFFFF" },
     { text: "passed", bg: "#99cc33ff", color: "#FFFFFFFF" },
@@ -13,17 +12,17 @@ export const useTagStore = defineStore("tags", () => {
     { text: "url", bg: "#763053FF", color: "#000000FF" },
   ]);
 
-  const url = computed((): string => {
+  const url = computed(() => {
     return `https://discord-tagger.vercel.app/?q=${encodeURIComponent(
       JSON.stringify(tags.value)
     )}`;
   });
 
-  const addTag = (tag: Tag) => {
+  const addTag = (tag) => {
     tags.value = [...tags.value, tag];
   };
 
-  const editTag = (tag: Tag, idx: number) => {
+  const editTag = (tag, idx) => {
     tags.value.splice(idx, 1, tag);
   };
 
