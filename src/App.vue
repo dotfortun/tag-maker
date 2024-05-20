@@ -3,11 +3,11 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header>
-    <h1>Hello, world.</h1>
-  </header>
+  <header></header>
 
   <RouterView />
+
+  <footer></footer>
 </template>
 
 <style scoped></style>
