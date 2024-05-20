@@ -1,9 +1,5 @@
-<script setup lang="ts">
-import { type Tag } from "@/types";
-
-const { tag } = defineProps<{
-  tag: Tag;
-}>();
+<script setup>
+const { tag } = defineProps(["tag"]);
 </script>
 
 <template>
