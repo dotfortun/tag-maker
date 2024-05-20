@@ -24,7 +24,7 @@ export const useTagStore = defineStore("tags", () => {
     )}`;
   });
 
-  const addTag = (tag) => {
+  const addTag = (tag: any) => {
     tags.value = [...tags.value, tag];
   };
 
