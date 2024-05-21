@@ -27,7 +27,12 @@ watchDebounced(
 <template>
   <main>
     <img :src="url" alt="test" />
-    <draggable v-model="tags" item-key="text" class="tag-list">
+    <draggable
+      v-model="tags"
+      item-key="text"
+      class="tag-list"
+      ghost-class="ghost"
+    >
       <template #item="{ element: tag, index: idx }">
         <TagEditor
           :tag="tag"
@@ -51,6 +56,51 @@ watchDebounced(
         </button>
       </template>
     </draggable>
+
+    <footer>
+      <div>
+        <small>
+          <ul>
+            <li class="list-none">
+              Created by <a href="https://github.com/dotfortun">dotfortun.</a>
+            </li>
+            <li class="list-none">
+              <template v-if="diceroll < 0.05">
+                Yes, this is basically just Nakamura Labs' Time tool but with
+                Discord timestamps.
+              </template>
+              <template v-else>
+                Donations to Peter Dostoevsky in Eve Online will be turned into
+                lossmails.
+              </template>
+            </li>
+            <li class="list-none">
+              <a
+                href="https://www.eveonline.com/signup?invc=5d52b821-87c0-4c81-bd0a-2cd88e9001b6"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Try Eve Online
+              </a>
+              or
+              <a
+                href="https://www.buymeacoffee.com/shanebelldev"
+                target="_blank"
+                rel="noopener noreferrer"
+                >buy me a coffee</a
+              >
+            </li>
+          </ul>
+        </small>
+      </div>
+      <div>
+        <p>
+          <a href="https://github.com/dotfortun/discord-tagger/issues">
+            Found a bug? Tell us here!
+          </a>
+        </p>
+      </div>
+    </footer>
   </main>
 </template>
 
@@ -65,5 +115,15 @@ main {
 
 .tag-list {
   @apply flex flex-1 flex-col gap-2 select-none;
+}
+
+.ghost {
+  @apply border-dashed opacity-25;
+}
+
+footer {
+  @apply container mx-auto mb-3;
+  @apply flex flex-row content-center justify-between p-4 text-slate-400;
+  @apply max-lg:flex-col max-lg:items-center max-lg:text-center;
 }
 </style>
