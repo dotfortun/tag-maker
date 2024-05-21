@@ -126,4 +126,12 @@ footer {
   @apply flex flex-row content-center justify-between p-4 text-slate-400;
   @apply max-lg:flex-col max-lg:items-center max-lg:text-center;
 }
+
+footer a {
+  @apply text-cyan-400 decoration-solid;
+}
+
+footer ul {
+  @apply pl-0;
+}
 </style>
