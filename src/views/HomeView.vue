@@ -20,7 +20,7 @@ watchDebounced(
   () => {
     url.value = getUrl();
   },
-  { debounce: 500, maxWait: 1000 }
+  { debounce: 500, maxWait: 1000, deep: true }
 );
 </script>
 
