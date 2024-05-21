@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import ColorPicker from "primevue/colorpicker";
 
 const { tag, change } = defineProps(["tag", "change"]);
 const tagState = ref(tag);
@@ -16,14 +17,33 @@ defineEmits(["tagChanged"]);
       :value="tag.text"
       :style="{ background: tag.bg, color: tag.color }"
       @change="
-        (ev) => {
-          tagState.text = ev.target.value;
-          $emit('tagChanged', {
-            text: tagState.text,
-            bg: tagState.bg,
-            color: tagState.color,
-          });
-        }
+        $emit('tagChanged', {
+          text: $event.target.value,
+          bg: tag.bg,
+          color: tag.color,
+        })
+      "
+    />
+    <ColorPicker
+      :defaultColor="tag.bg"
+      format="hex"
+      @change="
+        $emit('tagChanged', {
+          text: tag.text,
+          bg: `#${$event.value.toUpperCase()}FF`,
+          color: tag.color,
+        })
+      "
+    />
+    <ColorPicker
+      :defaultColor="tag.color"
+      format="hex"
+      @change="
+        $emit('tagChanged', {
+          text: tag.text,
+          bg: tag.bg,
+          color: `#${$event.value.toUpperCase()}FF`,
+        })
       "
     />
     <i
