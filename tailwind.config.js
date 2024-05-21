@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        discord: "#323439"
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import { watchDebounced } from "@vueuse/core";
 import draggable from "vuedraggable";
 
 import { storeToRefs } from "pinia";
@@ -8,25 +9,24 @@ import { useTagStore } from "../stores/tags";
 import TagEditor from "../components/TagEditor.vue";
 
 const store = useTagStore();
-const { addTag, editTag, removeTag } = store;
-const { url, tags } = storeToRefs(store);
+const { addTag, editTag, removeTag, getUrl } = store;
+const { tags } = storeToRefs(store);
+
+const url = ref(null);
+url.value = getUrl();
+
+watchDebounced(
+  tags,
+  () => {
+    url.value = getUrl();
+  },
+  { debounce: 500, maxWait: 1000 }
+);
 </script>
 
 <template>
   <main>
     <img :src="url" alt="test" />
-    <button
-      class="add-tag"
-      @click="
-        addTag({
-          text: 'New Tag',
-          bg: '#40a6ceff',
-          color: '#000000FF',
-        })
-      "
-    >
-      Add Tag
-    </button>
     <draggable v-model="tags" item-key="text" class="tag-list">
       <template #item="{ element: tag, index: idx }">
         <TagEditor
@@ -36,17 +36,31 @@ const { url, tags } = storeToRefs(store);
           v-on:tagCopied="addTag(tag)"
         />
       </template>
+      <template #footer v-if="tags.length <= 25">
+        <button
+          class="add-tag"
+          @click="
+            addTag({
+              text: 'New Tag',
+              bg: '#40a6ceff',
+              color: '#000000FF',
+            })
+          "
+        >
+          Add Tag
+        </button>
+      </template>
     </draggable>
   </main>
 </template>
 
 <style scoped>
 main {
-  @apply container;
+  @apply container flex flex-col gap-2;
 }
 
 .add-tag {
-  @apply bg-emerald-700 px-2 py-1 rounded-md select-none;
+  @apply px-2 py-1 rounded-lg select-none border-4 border-dashed border-slate-400;
 }
 
 .tag-list {

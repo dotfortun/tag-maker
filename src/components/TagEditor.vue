@@ -28,7 +28,7 @@ defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
       "
     />
     <label>
-      background:
+      bg:
       <select
         v-model="bgPicker"
         :style="{ background: tag.bg, color: tag.color }"
@@ -66,7 +66,7 @@ defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
     <label>
       text:
       <select
-        :style="{ background: tag.bg, color: getTextColor(tag.bg) }"
+        :style="{ background: tag.color, color: getTextColor(tag.color) }"
         v-model="colPicker"
         @change="
           $emit('tagChanged', {
@@ -105,11 +105,12 @@ defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
 
 <style scoped>
 .tag-editor {
-  @apply w-full flex flex-1 flex-row gap-2;
+  @apply w-full flex flex-1 flex-row justify-between gap-2 px-4 py-3;
+  @apply border-slate-500 border-4 rounded-lg;
 }
 
-.input {
-  @apply rounded-md;
+input {
+  @apply rounded-md px-2;
 }
 
 select {

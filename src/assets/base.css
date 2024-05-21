@@ -4,5 +4,9 @@
 
 body {
   @apply prose prose-invert max-w-none;
-  @apply text-slate-200 bg-sky-950 px-5 py-3;
+  @apply text-slate-200 bg-discord px-5 py-3;
+}
+
+#app {
+  @apply w-full flex flex-col items-center gap-2;
 }

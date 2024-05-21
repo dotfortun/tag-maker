@@ -41,7 +41,7 @@ export const useTagStore = defineStore("tags", () => {
     { text: "url", bg: "#763053", color: "#ffffff" },
   ]);
 
-  const url = computed(() => {
+  const getUrl = () => {
     const urlTags = tags.value.map(tag => {
       const t = JSON.parse(JSON.stringify(tag));
       t.bg = t.bg.padEnd(9, "f");
@@ -52,7 +52,7 @@ export const useTagStore = defineStore("tags", () => {
     return `https://discord-tagger.vercel.app/?q=${encodeURIComponent(
       JSON.stringify(urlTags)
     )}`;
-  });
+  };
 
   const addTag = (tag) => {
     tags.value = [...tags.value, tag];
@@ -69,5 +69,5 @@ export const useTagStore = defineStore("tags", () => {
     }
   }
 
-  return { tags, url, addTag, editTag, removeTag };
+  return { tags, getUrl, addTag, editTag, removeTag };
 });
