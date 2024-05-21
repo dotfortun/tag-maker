@@ -32,8 +32,8 @@ export const getTextColor = (hexColor) => {
 export const useTagStore = defineStore("tags", () => {
 
   const tags = ref([
-    { text: "C'est", bg: "#40a6ce", color: "#000000" },
-    { text: "ne", bg: "#99cc33", color: "#FFFFFF" },
+    { text: "Ceci", bg: "#40a6ce", color: "#000000" },
+    { text: "n'est", bg: "#99cc33", color: "#FFFFFF" },
     { text: "pas", bg: "#99cc33", color: "#FFFFFF" },
     { text: "une", bg: "#f9e154", color: "#000000" },
     { text: "tag", bg: "#ec942c", color: "#FFFFFF" },
