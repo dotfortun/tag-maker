@@ -35,7 +35,7 @@ export const useTagStore = defineStore("tags", () => {
     { text: "C'est", bg: "#40a6ce", color: "#000000" },
     { text: "ne", bg: "#99cc33", color: "#FFFFFF" },
     { text: "pas", bg: "#99cc33", color: "#FFFFFF" },
-    { text: "un", bg: "#f9e154", color: "#000000" },
+    { text: "une", bg: "#f9e154", color: "#000000" },
     { text: "tag", bg: "#ec942c", color: "#FFFFFF" },
   ]);
 
