@@ -95,7 +95,7 @@ watchDebounced(
       </div>
       <div>
         <p>
-          <a href="https://github.com/dotfortun/discord-tagger/issues">
+          <a href="https://github.com/dotfortun/tag-maker/issues">
             Found a bug? Tell us here!
           </a>
         </p>
