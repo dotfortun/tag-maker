@@ -32,13 +32,11 @@ export const getTextColor = (hexColor) => {
 export const useTagStore = defineStore("tags", () => {
 
   const tags = ref([
-    { text: "This", bg: "#40a6ce", color: "#000000" },
-    { text: "was", bg: "#99cc33", color: "#FFFFFF" },
-    { text: "passed", bg: "#99cc33", color: "#FFFFFF" },
-    { text: "in", bg: "#f9e154", color: "#000000" },
-    { text: "through", bg: "#ec942c", color: "#FFFFFF" },
-    { text: "the", bg: "#f02c2c", color: "#FFFFFF" },
-    { text: "url", bg: "#763053", color: "#ffffff" },
+    { text: "C'est", bg: "#40a6ce", color: "#000000" },
+    { text: "ne", bg: "#99cc33", color: "#FFFFFF" },
+    { text: "pas", bg: "#99cc33", color: "#FFFFFF" },
+    { text: "un", bg: "#f9e154", color: "#000000" },
+    { text: "tag", bg: "#ec942c", color: "#FFFFFF" },
   ]);
 
   const getUrl = () => {
