@@ -42,8 +42,8 @@ watchDebounced(
           @click="
             addTag({
               text: 'New Tag',
-              bg: '#40a6ceff',
-              color: '#000000FF',
+              bg: '#40a6ce',
+              color: '#000000',
             })
           "
         >
@@ -56,7 +56,7 @@ watchDebounced(
 
 <style scoped>
 main {
-  @apply container flex flex-col gap-2;
+  @apply container max-w-[768px] flex flex-col gap-2;
 }
 
 .add-tag {
