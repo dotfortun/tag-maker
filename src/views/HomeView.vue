@@ -33,6 +33,7 @@ const { url, tags } = storeToRefs(store);
           :tag="tag"
           v-on:tagChanged="(t) => editTag(t, idx)"
           v-on:tagRemoved="removeTag(idx)"
+          v-on:tagCopied="addTag(tag)"
         />
       </template>
     </draggable>

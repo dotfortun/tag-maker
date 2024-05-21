@@ -1,7 +1,36 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
+export const defaultColors = [
+  { name: "blue", code: "#40a6ce" },
+  { name: "green", code: "#99cc33" },
+  { name: "yellow", code: "#f9e154" },
+  { name: "orange", code: "#ec942c" },
+  { name: "red", code: "#f02c2c" },
+  { name: "purple", code: "#763053" },
+  { name: "white", code: "#ffffff" },
+  { name: "black", code: "#000000" },
+];
+
+export const hex2rgb = (hex) => {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  // return {r, g, b} 
+  return { r, g, b };
+}
+
+export const getTextColor = (hexColor) => {
+  const col = hex2rgb(hexColor);
+  if ((col.r * 0.299 + col.g * 0.587 + col.b * 0.114) > 186) {
+    return "#000000"
+  }
+  return "#ffffff"
+}
+
 export const useTagStore = defineStore("tags", () => {
+
   const tags = ref([
     { text: "This", bg: "#40a6ce", color: "#000000" },
     { text: "was", bg: "#99cc33", color: "#FFFFFF" },
@@ -9,7 +38,7 @@ export const useTagStore = defineStore("tags", () => {
     { text: "in", bg: "#f9e154", color: "#000000" },
     { text: "through", bg: "#ec942c", color: "#FFFFFF" },
     { text: "the", bg: "#f02c2c", color: "#FFFFFF" },
-    { text: "url", bg: "#763053", color: "#000000" },
+    { text: "url", bg: "#763053", color: "#ffffff" },
   ]);
 
   const url = computed(() => {
@@ -30,7 +59,6 @@ export const useTagStore = defineStore("tags", () => {
   };
 
   const editTag = (tag, idx) => {
-    console.table([tags.value[idx], tag])
     tags.value[idx] = tag;
   };
 
