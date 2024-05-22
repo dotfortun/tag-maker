@@ -10,7 +10,7 @@ const colPicker = ref(null);
 
 defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
 </script>
-
+6
 <template>
   <div class="tag-editor">
     <div class="handle"><i class="fa-solid fa-bars"></i></div>
@@ -98,14 +98,20 @@ defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
         "
       />
     </label>
-    <i class="fa-solid fa-copy copy-button" @click="$emit('tagCopied')"></i>
-    <i class="fa-solid fa-xmark delete-button" @click="$emit('tagRemoved')"></i>
+    <span>
+      <i class="fa-solid fa-copy copy-button" @click="$emit('tagCopied')"></i>
+      &nbsp;
+      <i
+        class="fa-solid fa-xmark delete-button"
+        @click="$emit('tagRemoved')"
+      ></i>
+    </span>
   </div>
 </template>
 
 <style scoped>
 .tag-editor {
-  @apply w-full flex flex-1 flex-row justify-between gap-2 px-4 py-3;
+  @apply w-full flex flex-1 flex-col md:flex-row justify-between gap-2 px-4 py-3;
   @apply border-slate-500 border-4 rounded-lg;
 }
 

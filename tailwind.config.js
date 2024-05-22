@@ -8,7 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        discord: "#323439"
+        discord: "#323439",
+        "new-green": "#99cc33"
       }
     },
   },
