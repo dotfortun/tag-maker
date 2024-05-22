@@ -12,8 +12,7 @@ const store = useTagStore();
 const { addTag, editTag, removeTag, getUrl } = store;
 const { tags } = storeToRefs(store);
 
-const url = ref(null);
-url.value = getUrl();
+const url = ref("/tags.png");
 
 watchDebounced(
   tags,
