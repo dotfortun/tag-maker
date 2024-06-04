@@ -31,6 +31,7 @@ watchDebounced(
       item-key="text"
       class="tag-list"
       ghost-class="ghost"
+      handle=".handle"
     >
       <template #item="{ element: tag, index: idx }">
         <TagEditor
