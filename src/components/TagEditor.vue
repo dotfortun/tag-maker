@@ -19,7 +19,7 @@ defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
       class="text"
       :value="tag.text"
       :style="{ background: tag.bg, color: tag.color }"
-      @input="
+      @change="
         $emit('tagChanged', {
           text: $event.target.value,
           bg: tag.bg,
