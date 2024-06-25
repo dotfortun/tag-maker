@@ -8,6 +8,9 @@ import { useTagStore } from "../stores/tags";
 
 import TagEditor from "../components/TagEditor.vue";
 
+import "dot-components/dist/style.css";
+import { Credits } from "dot-components";
+
 const store = useTagStore();
 const { addTag, editTag, removeTag, getUrl } = store;
 const { tags } = storeToRefs(store);
@@ -57,50 +60,10 @@ watchDebounced(
       </template>
     </draggable>
 
-    <footer>
-      <div>
-        <small>
-          <ul>
-            <li class="list-none">
-              Created by <a href="https://github.com/dotfortun">dotfortun.</a>
-            </li>
-            <li class="list-none">
-              <template v-if="diceroll < 0.05">
-                Yes, this is basically just Nakamura Labs' Time tool but with
-                Discord timestamps.
-              </template>
-              <template v-else>
-                Donations to Peter Dostoevsky in Eve Online will be turned into
-                lossmails.
-              </template>
-            </li>
-            <li class="list-none">
-              <a
-                href="https://www.eveonline.com/signup?invc=5d52b821-87c0-4c81-bd0a-2cd88e9001b6"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try Eve Online
-              </a>
-              or
-              <a
-                href="https://www.buymeacoffee.com/shanebelldev"
-                target="_blank"
-                rel="noopener noreferrer"
-                >buy me a coffee</a
-              >
-            </li>
-          </ul>
-        </small>
-      </div>
-      <div>
-        <p>
-          <a href="https://github.com/dotfortun/tag-maker/issues">
-            Found a bug? Tell us here!
-          </a>
-        </p>
-      </div>
-    </footer>
+    <Credits
+      eve-credits
+      bug-url="https://github.com/dotfortun/tag-maker/issues"
+    />
   </main>
 </template>
 
