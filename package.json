@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "dot-components": "github:dotfortun/dot-components",
+    "dot-components": "git+https://dotfortun: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@github.com/dotfortun/dot-components.git"",
     "pinia": "^2.1.7",
     "primevue": "^3.52.0",
     "vue": "^3.4.21",
