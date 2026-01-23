@@ -61,7 +61,6 @@ watchDebounced(
     </draggable>
 
     <Credits
-      eve-credits
       bug-url="https://github.com/dotfortun/tag-maker/issues"
     />
   </main>
