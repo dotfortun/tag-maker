@@ -10,7 +10,7 @@ const colPicker = ref(null);
 
 defineEmits(["tagChanged", "tagRemoved", "tagCopied"]);
 </script>
-6
+
 <template>
   <div class="tag-editor">
     <div class="handle"><i class="fa-solid fa-bars"></i></div>
